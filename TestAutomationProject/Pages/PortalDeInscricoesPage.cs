@@ -13,22 +13,26 @@ public class PortalDeInscricoesPage
         _driver = driver;
     }
 
-    // Navegar para a página de inscrições
-    public void NavegarParaPaginaDeInscricoes(string url)
-    {
-        _driver.Navigate().GoToUrl(url);
-    }
+    public IWebElement btnGraduacao => _driver.FindElement(By.CssSelector("[data-testid='education-level-select']"));
+    public IWebElement OpcaoGraduacao => _driver.FindElement(By.XPath("//div[@role='option' and span[text()=' Graduação ']"));
+    public IWebElement btnAvancar => _driver.FindElement(By.CssSelector("[data-testid='next-button']"));
+    public IWebElement OpcaoMestrado => _driver.FindElement(By.XPath("//div[@role='option' and text()='Mestrado em Ciência da Computação']"));
+    public IWebElement inputCPF => _driver.FindElement(By.CssSelector("[data-testid='cpf-input']"));
+    public IWebElement inputNome => _driver.FindElement(By.CssSelector("[data-testid='name-input']"));
+    public IWebElement inputSobrenome => _driver.FindElement(By.CssSelector("[data-testid='surname-input']"));
+    public IWebElement inputEmail => _driver.FindElement(By.CssSelector("[data-testid='email-input']"));
+    public IWebElement inputCelular => _driver.FindElement(By.CssSelector("[data-testid='cellphone-input']"));
+    public IWebElement inputCep => _driver.FindElement(By.CssSelector("[data-testid='cep-input']"));
+    public IWebElement inputEndereco => _driver.FindElement(By.CssSelector("[data-testid='address-input']"));
+    public IWebElement inputBairro => _driver.FindElement(By.CssSelector("[data-testid='neighborhood-input']"));
+    public IWebElement inputCidade => _driver.FindElement(By.CssSelector("[data-testid='city-input']"));
+    public IWebElement inputEstado => _driver.FindElement(By.CssSelector("[data-testid='state-input']"));
+    public IWebElement inputPais => _driver.FindElement(By.CssSelector("[data-testid='country-input']"));
+    public IWebElement TituloJornada => _driver.FindElement(By.XPath("//h3[text()='Sua jornada começa aqui!']"));
 
-    // Elementos
-    public IWebElement BotaoDropdown => _driver.FindElement(By.CssSelector("button[data-testid='education-level-select']"));
-    public IWebElement SelectDropdown => _driver.FindElement(By.CssSelector("select[data-testid='education-level-select']"));
-    public IWebElement BotaoAvancar => _driver.FindElement(By.CssSelector("[data-testid='next-button']"));
-    public IWebElement TituloSucesso => _driver.FindElement(By.XPath("//h3[text()='Sua jornada começa aqui!']"));
-
-    // Métodos
     public void AbrirDropdown()
     {
-        BotaoDropdown.Click();
+        btnGraduacao.Click();
     }
 
     public void AlterarValorDropdown(string valor)
@@ -39,22 +43,22 @@ public class PortalDeInscricoesPage
 
     public void ClicarBotaoAvancar()
     {
-        BotaoAvancar.Click();
+        btnAvancar.Click();
     }
 
     public void PreencherFormulario()
     {
-        _driver.FindElement(By.CssSelector("[data-testid='cpf-input']")).SendKeys("967.458.890-64");
-        _driver.FindElement(By.CssSelector("[data-testid='name-input']")).SendKeys("Teste");
-        _driver.FindElement(By.CssSelector("[data-testid='surname-input']")).SendKeys("Teste");
-        _driver.FindElement(By.CssSelector("[data-testid='email-input']")).SendKeys("Teste@gmail.com");
-        _driver.FindElement(By.CssSelector("[data-testid='cellphone-input']")).SendKeys("11443256788");
-        _driver.FindElement(By.CssSelector("[data-testid='cep-input']")).SendKeys("08620202");
-        _driver.FindElement(By.CssSelector("[data-testid='address-input']")).SendKeys("Rua Teste");
-        _driver.FindElement(By.CssSelector("[data-testid='neighborhood-input']")).SendKeys("Bairro Teste");
-        _driver.FindElement(By.CssSelector("[data-testid='city-input']")).SendKeys("Cidade Teste");
-        _driver.FindElement(By.CssSelector("[data-testid='state-input']")).SendKeys("Estado Teste");
-        _driver.FindElement(By.CssSelector("[data-testid='country-input']")).SendKeys("Brasil");
+        inputCPF.SendKeys("967.458.890-64");
+        inputNome.SendKeys("Teste");
+        inputSobrenome.SendKeys("Teste");
+        inputEmail.SendKeys("Teste@gmail.com");
+        inputCelular.SendKeys("11443256788");
+        inputCep.SendKeys("08620202");
+        inputEndereco.SendKeys("Teste");
+        inputBairro.SendKeys("Teste");
+        inputCidade.SendKeys("Teste");
+        inputEstado.SendKeys("Teste");
+        inputPais.SendKeys("Teste");
     }
 
     public void ValidarElementoVisivel(By by, int timeoutInSeconds = 10)

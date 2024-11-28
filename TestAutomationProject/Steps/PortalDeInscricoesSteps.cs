@@ -11,9 +11,10 @@ public class PortalDeInscricoesSteps
 {
     private readonly PortalDeInscricoesPage _portalPage;
 
-    public PortalDeInscricoesSteps(PortalDeInscricoesPage portalPage)
+    public PortalDeInscricoesSteps(ScenarioContext scenarioContext)
     {
-        _portalPage = portalPage;
+        var driver = (IWebDriver)scenarioContext["WebDriver"];
+        _portalPage = new PortalDeInscricoesPage(driver);
     }
 
     [Given(@"que o usuário está na página de inscrições")]
@@ -29,9 +30,9 @@ public class PortalDeInscricoesSteps
     }
 
     [When(@"selecionar a opção ""(.*)""")]
-    public void QuandoSelecionarAOpcao(string opcao)
+    public void QuandoSelecionarAOpcao(string nivel)
     {
-        _portalPage.AlterarValorDropdown(opcao);
+        _portalPage.AlterarValorDropdown(nivel == "Graduação" ? "undergraduate" : "graduate");
     }
 
     [When(@"clicar no botão ""(.*)""")]
