@@ -1,0 +1,14 @@
+{
+    "specFlow": {
+      "language": {
+        "feature": "pt-BR"
+      },
+      "plugins": [
+        {
+          "name": "SpecFlow.Tools.MsBuild.Generation",
+          "type": "Generator"
+        }
+      ]
+    }
+  }
+  
